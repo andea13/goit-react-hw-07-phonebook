@@ -53,7 +53,7 @@ export const deleteContact = createAsyncThunk(
     };
 
     try {
-      const response = await axios.delete('/contacts/:`${id}`', options);
+      const response = await axios.delete('/contacts/:id', options);
       console.log(response.data);
       return response.data;
     } catch (error) {

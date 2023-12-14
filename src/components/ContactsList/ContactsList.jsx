@@ -3,7 +3,7 @@ import { ContactList } from './ContactsList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilter } from '../../redux/selectors';
 import { useEffect } from 'react';
-import { addContact, fetchContacts } from '../../redux/operations';
+import { fetchContacts } from '../../redux/operations';
 
 export const ContactsList = () => {
   const contacts = useSelector(getContacts);
@@ -14,10 +14,6 @@ export const ContactsList = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   const updatedContacts = [...state, ...contacts];
-  // }, [contacts]);
 
   return (
     <ContactList>
