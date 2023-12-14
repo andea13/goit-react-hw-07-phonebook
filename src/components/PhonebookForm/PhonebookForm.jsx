@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Form, FormLabel, FormInput, FormButton } from './PhonebookForm.styled';
-import { addContact } from '../../redux/ContactsSlice';
+import { addContact } from '../../redux/operations';
 import { getContacts } from '../../redux/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';

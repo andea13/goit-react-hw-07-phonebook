@@ -1,19 +1,41 @@
 import { ContactsListItem } from '../ContactsListItem/ContactsListItem';
 import { ContactList } from './ContactsList.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilter } from '../../redux/selectors';
+import { useEffect } from 'react';
+import { addContact, fetchContacts } from '../../redux/operations';
 
 export const ContactsList = () => {
   const contacts = useSelector(getContacts);
+  console.log(contacts);
   const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   const updatedContacts = [...state, ...contacts];
+  // }, [contacts]);
 
   return (
     <ContactList>
-      {contacts
-        .filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()))
-        .map(({ name, number, id }) => (
-          <ContactsListItem name={name} number={number} key={id} id={id} />
-        ))}
+      {contacts &&
+        contacts
+          .filter(
+            ({ name }) =>
+              name && name.toLowerCase().includes(filter.toLowerCase())
+          )
+          .map(({ createdAt, name, phone, id }) => (
+            <ContactsListItem
+              createdAt={createdAt}
+              name={name}
+              phone={phone}
+              key={id}
+              id={id}
+            />
+          ))}
     </ContactList>
   );
 };

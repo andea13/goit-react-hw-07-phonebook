@@ -5,6 +5,7 @@ import { getFilter } from '../../redux/selectors';
 
 export const ContactsFilter = () => {
   const filter = useSelector(getFilter);
+  console.log(filter);
 
   const dispatch = useDispatch();
 
