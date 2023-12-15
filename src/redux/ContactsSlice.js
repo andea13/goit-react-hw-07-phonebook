@@ -52,13 +52,20 @@ export const ContactsSlice = createSlice({
       })
 
       .addCase(deleteContact.fulfilled, (state, action) => {
-        console.log(action.payload);
-        console.log(state.contacts.items);
         state.contacts.isLoading = false;
-
-        state.contacts.items = state.contacts.items.filter(
-          contact => contact.id !== action.payload
+        const deletedIdIndex = state.contacts.items.findIndex(
+          contact => contact.id === action.payload.id
         );
+
+        if (deletedIdIndex !== -1) {
+          state.contacts = {
+            ...state.contacts,
+            items: [
+              ...state.contacts.items.slice(0, deletedIdIndex),
+              ...state.contacts.items.slice(deletedIdIndex + 1),
+            ],
+          };
+        }
       })
 
       .addCase(deleteContact.rejected, (state, action) => {

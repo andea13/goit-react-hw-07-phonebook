@@ -16,7 +16,7 @@ export const ContactsListItem = ({ createdAt, name, phone, id }) => {
   };
 
   return (
-    <ContactsItem>
+    <ContactsItem key={id}>
       <ContactsItemName>Name: {name} </ContactsItemName>
       <ContactsItemNumber>Phone: {phone}</ContactsItemNumber>
       <ContactsItemCreatedAt>Created at: {createdAt}: </ContactsItemCreatedAt>
