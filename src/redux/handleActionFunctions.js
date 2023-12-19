@@ -26,9 +26,10 @@ export const handleDeleteContactFulfilled = (state, action) => {
   );
 
   if (deletedIdIndex !== -1) {
-    state.contacts.items = [
-      ...state.contacts.items.slice(0, deletedIdIndex),
-      ...state.contacts.items.slice(deletedIdIndex + 1),
-    ];
+    // state.contacts.items = [
+    state.contacts.items.splice(deletedIdIndex, 1);
+    //   ...state.contacts.items.slice(0, deletedIdIndex),
+    //   ...state.contacts.items.slice(deletedIdIndex + 1),
+    // ];
   }
 };
