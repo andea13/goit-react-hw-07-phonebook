@@ -1,5 +1,3 @@
-// export const getContacts = state => state.contacts.items;
-// export const getFilter = state => state.filter;
 import { createSelector } from 'reselect';
 
 export const selectFilter = state => state.filter;
